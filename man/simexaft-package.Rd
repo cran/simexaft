@@ -2,7 +2,7 @@
 \alias{simexaft-package}
 \docType{package}
 \title{
-simexaft
+SIMEX algorithm for the accelerated failure time model with mismeasured covariates
 }
 \description{
 Implementation of Simulation-Extrapolation (SIMEX) algorithm for the accelerated failure time (AFT) model with mismeasured covariates.
@@ -11,12 +11,11 @@ Implementation of Simulation-Extrapolation (SIMEX) algorithm for the accelerated
 \tabular{ll}{
 Package: \tab simexaft\cr
 Type: \tab Package\cr
-Version: \tab 1.0.2\cr
-Date: \tab 2010-07-08\cr
+Version: \tab 1.0.3\cr
+Date: \tab 2010-09-05\cr
 License: \tab GPL \cr
 LazyLoad: \tab yes\cr
 }
-
 }
 
 \author{
@@ -29,3 +28,4 @@ He WQ, Yi GY, Xiong J.(2007) Accelerated Failure Time Models with Covariates Sub
 }
 
 \keyword{ package }
+

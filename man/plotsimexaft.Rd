@@ -14,7 +14,8 @@ plotsimexaft(obj, var, extrapolation = c("linear", "quadratic", "both"), ylimit)
 \arguments{
   \item{obj}{an object returned by the function "simexaft".}
   \item{var}{a character string of any covariate used in the AFT model.}
-  \item{extrapolation}{a character string giving the type of the extrapolation method, the default is set to be linear extrapolation.}
+  \item{extrapolation}{a character string giving the type of the extrapolation 
+  method, the default is set to be linear extrapolation.}
   \item{ylimit}{the y limits of the plot.}
 }
 
@@ -38,36 +39,28 @@ plotsimexaft(obj, var, extrapolation = c("linear", "quadratic", "both"), ylimit)
 \examples{
 ###########example for the dataset with known variance.################
 library(simexaft)
-data(rhDNase)
+data(BHS)
+dataset = BHS
+dataset$SBP=log(dataset$SBP-50)
 
-###############sensitive analysis###############
 set.seed(120)
-error.sd <- 0.8*sd(rhDNase$fev)
+formula=Surv(SURVTIME,DTHCENS)~SBP+CHOL+AGE+BMI+SMOKE1+SMOKE2
 
-fev.error <- rhDNase$fev + rnorm(length(rhDNase$fev), mean=0,sd=error.sd)
+ind=c("SBP","CHOL")
 
-dataset<-cbind(rhDNase$time2, rhDNase$status, rhDNase$trt, fev.error)
-
-colnames(dataset)<-c("time2","status","trt","fev.error")
-
-dataset <- as.data.frame(dataset)
-
-formula <- Surv(time2, status)~trt + fev.error
-
-ind <- c("fev.error")
-
-err <- matrix(error.sd^2)
-
-#######use simexaft to adjust the effect of measurement error and apply the quadratic extrapolation######
-fit1 <-simexaft(formula=formula, data=dataset,SIMEXvariable=ind,repeated="FALSE",err.mat=err,B=50,lambda=seq(0,2,0.1),extrapolation="quadratic",dist="weibull")
-
-fit1
-
-summary(fit1)
+err.mat=diag(rep(0.5625,2))
 
 
-plotsimexaft(fit1,"fev.error","both",ylim=c(-0.01,0.02))
+### fit an AFT model with quadratic extrapolation
+out2=simexaft(formula=formula,data=dataset,SIMEXvariable=ind,repeated="FALSE",
+                repind=list(),err.mat=err.mat,B=50,lambda=seq(0,2,0.1),
+                extrapolation="quadratic",dist="weibull")
+
+summary(out2)
+
+plotsimexaft(out2,"SBP","both",ylimit=c(-3,1))
 
 }
+
 
 

@@ -21,3 +21,4 @@ He WQ, Yi GY, Xiong J.(2007) Accelerated Failure Time Models with Covariates Sub
 }
 \author{ Juan Xiong, Wenqing He and Grace Y. Yi}
 
+

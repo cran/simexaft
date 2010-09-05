@@ -29,3 +29,4 @@ He WQ, Yi GY, Xiong J.(2007) Accelerated Failure Time Models with Covariates Sub
 \seealso{\code{\link[simexaft]{quadraticextrapolation}}}
 
 \author{ Juan Xiong, Wenqing He and Grace Y. Yi}
+

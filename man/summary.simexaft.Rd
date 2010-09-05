@@ -17,7 +17,8 @@ Summary method for the class SIMEXAFF.
 }
 
 \value{
-  \item{coefficients }{a p x 3 matrix with columns for the estimated coefficient its standard error, corresponding(two-sided) p- value}
+  \item{coefficients }{a p x 3 matrix with columns for the estimated coefficient 
+                        its standard error, corresponding(two-sided) p- value}
   \item{scalereg }{estimate of the scale }
   \item{extrapolation }{the extrapolation method }
   \item{SIMEXvariable }{character vector of the SIMEXvariable }
@@ -30,3 +31,4 @@ He WQ, Yi GY, Xiong J.(2007) Accelerated Failure Time Models with Covariates Sub
 \seealso{
 \code{\link[simexaft]{simexaft}}
 }
+
