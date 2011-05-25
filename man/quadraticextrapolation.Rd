@@ -23,12 +23,9 @@ quadraticextrapolation(A1, A2, A3, lambda)
 }
 
 \references{
-He WQ, Yi GY, Xiong J.(2007) Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
+He, W., Yi, G. Y. and Xiong, J. (2007). Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
 }
 
 \seealso{\code{\link[simexaft]{linearextrapolation}}}
 \author{ Juan Xiong, Wenqing He and Grace Y. Yi}
-
-
-
 

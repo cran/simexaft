@@ -11,9 +11,10 @@ Implementation of Simulation-Extrapolation (SIMEX) algorithm for the accelerated
 \tabular{ll}{
 Package: \tab simexaft\cr
 Type: \tab Package\cr
-Version: \tab 1.0.3\cr
-Date: \tab 2010-09-05\cr
-License: \tab GPL \cr
+Version: \tab 1.0.4\cr
+Date: \tab 2011-05-25\cr
+License: \tab GPL\cr
+Depends: \tab survival, mvtnorm\cr
 LazyLoad: \tab yes\cr
 }
 }
@@ -24,8 +25,9 @@ Juan Xiong <jxiong2@uwo.ca>, Wenqing He <whe@stats.uwo.ca>, Grace Y. Yi<yyi@uwat
 Maintainer: Juan Xiong <jxiong2@uwo.ca>
 }
 \references{
-He WQ, Yi GY, Xiong J.(2007) Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
+He, W., Yi, G. Y. and Xiong, J. (2007). Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
 }
 
 \keyword{ package }
+
 

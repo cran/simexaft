@@ -31,16 +31,18 @@ This dataset is a subset of the Busselton Health study. The Busselton Health stu
     \item{\code{SMOKE2}}{indicator of current smoker}
   }
 }
+
 \details{
 This dataset is a subset of the Busselton Health study. The Busselton Health study was a repeated cross-sectional survey that was conducted to the community of Busselton in Western Australian.
 }
 \source{
-He WQ, Yi GY, Xiong J. (2007) Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
+He, W., Yi, G. Y. and Xiong, J. (2007). Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
 
-Knuiman MW, Cullent KJ, Bulsara MK, Welborn TA, Hobbs MST. (1994) Mortality trends, 1965 to 1989, in Busselton, The Site of Repeated Health Surveys and Interventions. \emph{Australian Journal of Public Health}, 18, 129-135.
+Knuiman, M. W., Cullent, K. J., Bulsara, M. K., Welborn, T. A. and Hobbs, M. S. T. (1994). Mortality trends, 1965 to 1989, in Busselton, The Site of Repeated Health Surveys and Interventions. \emph{Australian Journal of Public Health}, 18, 129-135.
 }
+
+\seealso{\code{\link[simexaft]{simexaft}}}
+
 \keyword{datasets}
-
-
 
 

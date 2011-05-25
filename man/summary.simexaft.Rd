@@ -18,17 +18,18 @@ Summary method for the class SIMEXAFF.
 
 \value{
   \item{coefficients }{a p x 3 matrix with columns for the estimated coefficient 
-                        its standard error, corresponding(two-sided) p- value}
+                        its standard error, corresponding(two-sided) p-value}
   \item{scalereg }{estimate of the scale }
   \item{extrapolation }{the extrapolation method }
   \item{SIMEXvariable }{character vector of the SIMEXvariable }
 }
 \references{
-He WQ, Yi GY, Xiong J.(2007) Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
+He, W., Yi, G. Y. and Xiong, J. (2007). Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
 }
 \author{ Juan Xiong, Wenqing He and Grace Y. Yi}
 
 \seealso{
 \code{\link[simexaft]{simexaft}}
 }
+
 

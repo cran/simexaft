@@ -8,7 +8,7 @@ Plot the Extrapolation Curve
 A function to give the plot of the extrapolation curve for any covariables of the AFT model.
 }
 \usage{
-plotsimexaft(obj, var, extrapolation = c("linear", "quadratic", "both"), ylimit)
+plotsimexaft(obj, var, extrapolation=c("linear","quadratic","both"), ylimit)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -52,7 +52,7 @@ err.mat=diag(rep(0.5625,2))
 
 
 ### fit an AFT model with quadratic extrapolation
-out2=simexaft(formula=formula,data=dataset,SIMEXvariable=ind,repeated="FALSE",
+out2=simexaft(formula=formula,data=dataset,SIMEXvariable=ind,repeated=FALSE,
                 repind=list(),err.mat=err.mat,B=50,lambda=seq(0,2,0.1),
                 extrapolation="quadratic",dist="weibull")
 
@@ -61,6 +61,7 @@ summary(out2)
 plotsimexaft(out2,"SBP","both",ylimit=c(-3,1))
 
 }
+
 
 
 

@@ -17,8 +17,7 @@ Printing the most important values in a clear way.
   \item{\dots}{ arguments passed to other functions. }
 }
 \references{
-He WQ, Yi GY, Xiong J.(2007) Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
+He, W., Yi, G. Y. and Xiong, J. (2007). Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
 }
 \author{ Juan Xiong, Wenqing He and Grace Y. Yi}
-
 

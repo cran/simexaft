@@ -1,5 +1,5 @@
 simexaft <-
-function(formula=formula(data),data=parent.frame(),SIMEXvariable,repeated ="FALSE",repind=list(),err.mat=err.mat, B=200,lambda=seq(0,2,0.1),extrapolation="quadratic",dist="weibull")
+function(formula=formula(data),data=parent.frame(),SIMEXvariable,repeated =FALSE,repind=list(),err.mat=err.mat,B=50,lambda=seq(0,2,0.1),extrapolation="quadratic",dist="weibull")
 {
 
 
@@ -21,13 +21,13 @@ function(formula=formula(data),data=parent.frame(),SIMEXvariable,repeated ="FALS
 
 
        #################### check the input of repeated, err.mat, repind ##################################
-       if (!(repeated == "FALSE") & !(repeated == "TRUE") ) {
+       if (!(repeated == FALSE) & !(repeated == TRUE) ) {
 
                stop("Repeated indicator should only be 'TRUE' or 'FALSE'. ")
 
                }
 
-       if(repeated=="FALSE"){
+       if(repeated==FALSE){
 
                       err.mat=as.matrix(err.mat)
 
@@ -62,7 +62,7 @@ function(formula=formula(data),data=parent.frame(),SIMEXvariable,repeated ="FALS
                 }
 
 
-       else if(repeated=="TRUE"){
+       else if(repeated==TRUE){
 
                     if(length(SIMEXvariable) != length(repind)){
 
@@ -180,7 +180,7 @@ function(formula=formula(data),data=parent.frame(),SIMEXvariable,repeated ="FALS
                  for(r in 1:B)
                  {
 
-                      if(repeated=="FALSE"){
+                      if(repeated==FALSE){
 
                                temp[SIMEXvariable]=data[SIMEXvariable]+sqrt(lambda[k])*rmvnorm(ndata,rep(0,length(SIMEXvariable)),err.mat)
 
@@ -291,7 +291,7 @@ function(formula=formula(data),data=parent.frame(),SIMEXvariable,repeated ="FALS
 
 
 
-        if(repeated=="FALSE"){
+        if(repeated==FALSE){
         erg=list(coefficients=estimate,se=se,scalereg=scalereg,pvalue=pvalue,lambda=lambda, B=B, formula=formula, err.mat=err.mat, extrapolation=extrapolation,SIMEXvariable=SIMEXvariable,theta=theta.all)
 
         }

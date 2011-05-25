@@ -2,7 +2,7 @@
 \alias{rhDNase}
 \docType{data}
 \title{
-rhDNase data set
+rhDNase Data Set
 }
 \description{
 This is a dataset reported by Fuchs et al. (1994) for a double-blind randomized multicenter 
@@ -37,4 +37,5 @@ Cook, R. J. and Lawless, J. F. (2007). The Statistical Analysis of Recurrent Eve
 \seealso{\code{\link[simexaft]{simexaft}}}
 
 \keyword{datasets}
+
 

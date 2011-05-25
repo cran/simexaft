@@ -1,8 +1,8 @@
 Package: simexaft
 Type: Package
 Title: simexaft
-Version: 1.0.3
-Date: 2010-09-05
+Version: 1.0.4
+Date: 2011-05-25
 Author: Juan Xiong <jxiong2@uwo.ca>, Wenqing He <whe@stats.uwo.ca>,
         Grace Y. Yi<yyi@uwaterloo.ca>
 Maintainer: Juan Xiong <jxiong2@uwo.ca>
@@ -12,6 +12,6 @@ Description: Implement of the Simulation-Extrapolation (SIMEX)
 License: GPL
 Depends: survival, mvtnorm
 LazyLoad: yes
-Packaged: 2010-09-08 02:09:18 UTC; pandahc
+Packaged: 2011-06-01 02:29:48 UTC; pandahc
 Repository: CRAN
-Date/Publication: 2010-09-08 07:59:45
+Date/Publication: 2011-06-01 16:16:20

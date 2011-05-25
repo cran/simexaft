@@ -7,24 +7,22 @@
 }
 \usage{
 simexaft(formula = formula(data), data = parent.frame(), 
-        SIMEXvariable, repeated = "FALSE", repind = list(), 
-        err.mat = err.mat, B =200, lambda = seq(0, 2, 0.1), 
+        SIMEXvariable, repeated = FALSE, repind = list(), 
+        err.mat = err.mat, B = 50, lambda = seq(0, 2, 0.1), 
         extrapolation = "quadratic", dist = "weibull")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{formula}{ the model to fit in the survreg function, with the variables coming with data.  }
+  \item{formula}{ specifies the model to be fitted, with the variables coming with data. This argument has the same format as the formula argument in the existing R function "survreg". }
   \item{data}{ optional data frame in which to interpret the varialbes occurring in the formula.  }
-  \item{SIMEXvariable}{ vector contains the names of the variables subject to meansurement error.  }
-  \item{repeated}{ the indicator of repeat measurement, set to "TRUE" or "FALSE".  }
-  \item{repind}{ list contiains the names of the repeat measument variables. If repeated = "TRUE", repind must be specify.  }
-  \item{err.mat}{ covariance matrix of the variables with measurement error, If repeated = "FALSE", err.mat must be specify. }
-  \item{B}{ number of iterations for each lambda, The default is set to 50.  }
-  \item{lambda}{ vector of lambdas, the grids for the extrapolation step.  }
-  \item{extrapolation}{ extrapolation method: linear, quadratic are implemented(first 4 letters are enough) }
-  \item{dist}{ specifies a distribution that is assumed in AFT model. 
-                This argument is the same as the "dist" option in the existing R function "survreg". 
-                These include "weibull", "exponential", "gaussian", "logistic", "lognormal", and "loglogistic". }
+  \item{SIMEXvariable}{ the index of the covariate variables that are subject to measurement error. }
+  \item{repeated}{ set to TRUE or FALSE to indicate if there are repeated measurements for the mis-measured variables. }
+  \item{repind}{ the index of the repeated measurement variables for each mis-measured variable. It has an R list form. If repeated = TRUE, repind must be specify.  }
+  \item{err.mat}{ specifies the variables with measurement error, If repeated = FALSE, err.mat must be specify. }
+  \item{B}{ the number of simulated samples for the simulation step. The default is set to be 50.  }
+  \item{lambda}{ the vector of lambdas, the grids for the extrapolation step.  }
+  \item{extrapolation}{ specifies the function form for the extrapolation step. The options are linear, quadratic and both. The default is set to be quadratic.(first 4 letters are enough) }
+  \item{dist}{ specifies a parametric distribution that is assumed in AFT model. This argument is the same as the dist option in the existing R function "survreg". These include "weibull", "exponential", "gaussian", "logistic", "lognormal", and "loglogistic". }
 }
 \details{
   If the SIMEXvariable is repeated measured then you only need to use arguments 
@@ -33,21 +31,21 @@ simexaft(formula = formula(data), data = parent.frame(),
 \value{
   \item{coefficient}{the corrected coefficients of the AFT model}
   \item{se}{the standard deviation of each coefficient}
-  \item{pvalue}{p-value for the hypothesis of that coefficient equal zero}
+  \item{pvalue}{the p-value for the hypothesis of that coefficient equal zero}
   \item{scalreg}{the estimate of the scale}
-  \item{theta}{estimates for every B and lambda}
-  \item{lambda}{ vector of lambdas for which the simulation step should be done }
-  \item{B}{ number of iterations for each lambda  }
-  \item{formula}{ the model to fit in the survreg function }
-  \item{err.mat}{ covariance matrix  of the variables with measurement error}
-  \item{repind}{ list contiains the names of the repeat measument variables }
-  \item{extrapolation}{ extrapolation method: linear ,quadratic are implemented(first 4 letters are enough)}
-  \item{SIMEXvariable}{ vector contains the names of the variables with meansurement error }
+  \item{theta}{the estimates for every B and lambda}
+  \item{lambda}{ the vector of lambdas for which the simulation step should be done}
+  \item{B}{ the number of simulated samples for the simulation step.}
+  \item{formula}{ the model to be fitted in the survreg function}
+  \item{err.mat}{ the covariance matrix of the variables with measurement error}
+  \item{repind}{ the list contiains the names of the repeat measument variables}
+  \item{extrapolation}{ the extrapolation method: linear ,quadratic are implemented (first 4 letters are enough)}
+  \item{SIMEXvariable}{ the vector contains the names of the variables with meansurement error}
 
 }
 
 \references{
-He WQ, Yi GY, Xiong J.(2007) Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
+He, W., Yi, G. Y. and Xiong, J. (2007). Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
 }
 \author{ Juan Xiong, Wenqing He and Grace Y. Yi}
 
@@ -73,7 +71,7 @@ formula=Surv(SURVTIME,DTHCENS)~SBP+CHOL+AGE+BMI+SMOKE1+SMOKE2
 ind=c("SBP","CHOL")
 err.mat=diag(rep(0.5625,2))
 
-out2=simexaft(formula=formula,data=dataset,SIMEXvariable=ind,repeated="FALSE",
+out2=simexaft(formula=formula,data=dataset,SIMEXvariable=ind,repeated=FALSE,
                 repind=list(),err.mat=err.mat,B=50,lambda=seq(0,2,0.1),
                 extrapolation="quadratic",dist="weibull")
 
@@ -128,7 +126,7 @@ summary(output2)
 
 ######use simexaft and apply the quadratic extrapolation######
 output3=simexaft(formula=formula,data=dataset2,SIMEXvariable=ind,
-            repeated="TRUE",repind=list(c("fev.error","fev.error2")),
+            repeated=TRUE,repind=list(c("fev.error","fev.error2")),
             err.mat=NULL,B=50,lambda=seq(0,2,0.1),extrapolation="quadratic",
             dist="weibull")
 
@@ -136,4 +134,5 @@ summary(output3)
 
 
 }
+
 
