@@ -11,8 +11,8 @@ Implementation of Simulation-Extrapolation (SIMEX) algorithm for the accelerated
 \tabular{ll}{
 Package: \tab simexaft\cr
 Type: \tab Package\cr
-Version: \tab 1.0.4\cr
-Date: \tab 2011-05-25\cr
+Version: \tab 1.0.5\cr
+Date: \tab 2011-07-04\cr
 License: \tab GPL\cr
 Depends: \tab survival, mvtnorm\cr
 LazyLoad: \tab yes\cr
