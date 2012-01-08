@@ -5,10 +5,8 @@
 rhDNase Data Set
 }
 \description{
-This is a dataset reported by Fuchs et al. (1994) for a double-blind randomized multicenter 
-clinical trial designed to evaluate the effect of rhDNase, a recombinant deoxyribonuclease I 
-enzyme, versus placebo on the occurrence of respiratory exacerbations among patients with 
-cystic fibrosis. Data on the occurrence and resolution of all exacerbations were recorded for 645 patients in this trial.
+This is a dataset reported by Fuchs et al. (1994) for a double-blind randomized multicenter clinical trial designed to evaluate the effect of rhDNase, a recombinant deoxyribonuclease I 
+enzyme, versus placebo on the occurrence of respiratory exacerbations among patients with cystic fibrosis. Data on the occurrence and resolution of all exacerbations were recorded for 645 patients in this trial.
 For more details about the dataset feature, see Cook and Lawless (2007). Here we only include the first record of the patients that have etype=1.
 }
 \usage{data(rhDNase)}
@@ -37,5 +35,4 @@ Cook, R. J. and Lawless, J. F. (2007). The Statistical Analysis of Recurrent Eve
 \seealso{\code{\link[simexaft]{simexaft}}}
 
 \keyword{datasets}
-
 

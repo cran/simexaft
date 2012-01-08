@@ -38,29 +38,28 @@ plotsimexaft(obj, var, extrapolation=c("linear","quadratic","both"), ylimit)
 
 \examples{
 ###########example for the dataset with known variance.################
-library(simexaft)
-data(BHS)
-dataset = BHS
-dataset$SBP=log(dataset$SBP-50)
+library("simexaft")
+data("BHS")
+dataset <- BHS
+dataset$SBP <- log(dataset$SBP-50)
 
 set.seed(120)
-formula=Surv(SURVTIME,DTHCENS)~SBP+CHOL+AGE+BMI+SMOKE1+SMOKE2
+formula <- Surv(SURVTIME,DTHCENS)~SBP+CHOL+AGE+BMI+SMOKE1+SMOKE2
 
-ind=c("SBP","CHOL")
-
-err.mat=diag(rep(0.5625,2))
-
+ind <- c("SBP", "CHOL")
+err.mat <- diag(rep(0.5625, 2))
 
 ### fit an AFT model with quadratic extrapolation
-out2=simexaft(formula=formula,data=dataset,SIMEXvariable=ind,repeated=FALSE,
-                repind=list(),err.mat=err.mat,B=50,lambda=seq(0,2,0.1),
-                extrapolation="quadratic",dist="weibull")
+out2 <- simexaft(formula = formula, data = dataset, SIMEXvariable = ind, 
+        repeated = FALSE, repind = list(), err.mat = err.mat, B = 50, 
+        lambda=seq(0, 2, 0.1),extrapolation="quadratic", dist="weibull")
 
 summary(out2)
 
 plotsimexaft(out2,"SBP","both",ylimit=c(-3,1))
 
 }
+
 
 
 

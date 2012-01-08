@@ -17,7 +17,13 @@ Printing the most important values in a clear way.
   \item{\dots}{ arguments passed to other functions. }
 }
 \references{
+Genz, A., Bretz, F., Miwa, T., Mi, X., Leisch, F., Scheipl, F. and Hothorn, T. (2011). mvtnorm: Multivariate Normal and t Distributions. R package version 0.9-9991, URL http://CRAN.
+R-project.org/package=mvtnorm.
+
 He, W., Yi, G. Y. and Xiong, J. (2007). Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
+
+Therneau, T. and Lumley, T. (2011). survival: Survival Analysis, Including Penalised Likelihood. R package version 2.36-10, URL http://CRAN.R-project.org/package=survival.
 }
 \author{ Juan Xiong, Wenqing He and Grace Y. Yi}
+
 

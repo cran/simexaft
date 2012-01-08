@@ -41,39 +41,48 @@ simexaft(formula = formula(data), data = parent.frame(),
   \item{repind}{ the list contiains the names of the repeat measument variables}
   \item{extrapolation}{ the extrapolation method: linear ,quadratic are implemented (first 4 letters are enough)}
   \item{SIMEXvariable}{ the vector contains the names of the variables with meansurement error}
-
 }
 
 \references{
+Genz, A., Bretz, F., Miwa, T., Mi, X., Leisch, F., Scheipl, F. and Hothorn, T. (2011). mvtnorm: Multivariate Normal and t Distributions. R package version 0.9-9991, URL http://CRAN.
+R-project.org/package=mvtnorm.
+
 He, W., Yi, G. Y. and Xiong, J. (2007). Accelerated Failure Time Models with Covariates Subject to Measurement Error. \emph{Statistics in Medicine}, 26, 4817-4832.
+
+Therneau, T. and Lumley, T. (2011). survival: Survival Analysis, Including Penalised Likelihood. R package version 2.36-10, URL http://CRAN.R-project.org/package=survival.
 }
+
 \author{ Juan Xiong, Wenqing He and Grace Y. Yi}
 
 \seealso{\code{\link[survival]{survreg}}, \code{\link[simexaft]{plotsimexaft}}}
 
 \examples{
+library("simexaft")
 
-library(simexaft)
-data(BHS)
-dataset = BHS
-dataset$SBP=log(dataset$SBP-50)
+data("BHS")
+
+dataset <- BHS
+
+dataset$SBP <- log(dataset$SBP - 50)
 
 ###Naive AFT approach
-formula=Surv(SURVTIME,DTHCENS)~SBP+CHOL+AGE+BMI+SMOKE1+SMOKE2
+formula <- Surv(SURVTIME,DTHCENS) ~ SBP + CHOL + AGE + BMI + SMOKE1 + SMOKE2
 
-out1=survreg(formula = formula, data = dataset, dist="weibull")
+out1 <- survreg(formula = formula, data = dataset, dist = "weibull")
 
 summary(out1)
 
+
 ###fit a AFT model with quadratic extrapolation
 set.seed(120)
-formula=Surv(SURVTIME,DTHCENS)~SBP+CHOL+AGE+BMI+SMOKE1+SMOKE2
-ind=c("SBP","CHOL")
-err.mat=diag(rep(0.5625,2))
 
-out2=simexaft(formula=formula,data=dataset,SIMEXvariable=ind,repeated=FALSE,
-                repind=list(),err.mat=err.mat,B=50,lambda=seq(0,2,0.1),
-                extrapolation="quadratic",dist="weibull")
+ind <- c("SBP", "CHOL")
+
+err.mat <- diag(rep(0.5625, 2))
+
+out2 <- simexaft(formula = formula, data = dataset, SIMEXvariable = ind, 
+        repeated = FALSE, repind = list(), err.mat = err.mat, B = 50,
+        lambda = seq(0, 2, 0.1),extrapolation = "quadratic", dist = "weibull")
 
 summary(out2)
 
@@ -84,52 +93,49 @@ summary(out2)
 
 
 #################### repeated measurements #################################
-library(simexaft)
-data(rhDNase)
+data("rhDNase")
 
 ###true model
-fev.ave <- (rhDNase$fev + rhDNase$fev2)/2
-output1 <- survreg(Surv(rhDNase$time2, rhDNase$status) ~ rhDNase$trt + fev.ave, 
-                    dist='weibull')
+rhDNase$fev.ave <- (rhDNase$fev + rhDNase$fev2)/2
+
+output1 <- survreg(Surv(time2, status) ~ trt + fev.ave, data = rhDNase, 
+                    dist = "weibull")
+
 summary(output1)
 
 
 ####sensitive analysis#####
 set.seed(120)
-error.sd <- 0.15*sd(rhDNase$fev)
 
-error.sd2 <- 0.15*sd(rhDNase$fev2)
+fev.error <- rhDNase$fev + rnorm(length(rhDNase$fev), mean = 0, 
+                                    sd = 0.15 * sd(rhDNase$fev))
 
-fev.error <- rhDNase$fev + rnorm(length(rhDNase$fev), mean=0,sd=error.sd)
+fev.error2 <- rhDNase$fev2 + rnorm(length(rhDNase$fev2),mean = 0, 
+                                    sd = 0.15 * sd(rhDNase$fev2))
 
-fev.error2 <- rhDNase$fev2 + rnorm(length(rhDNase$fev2), mean=0,sd=error.sd2)
+dataset2 <- cbind(rhDNase[, c("time2", "status", "trt")], fev.error, fev.error2)
 
-dataset2<-cbind(rhDNase$time2, rhDNase$status, rhDNase$trt, fev.error, fev.error2)
+formula <- Surv(time2, status) ~ trt + fev.error
 
-colnames(dataset2)<-c("time2","status","trt","fev.error","fev.error2")
+ind <- "fev.error"
 
-dataset2 <- as.data.frame(dataset2)
-
-formula <- Surv(time2, status)~trt + fev.error
-
-ind <- c("fev.error")
 
 ########naive model using the average FEV value####################
 fev.error.c <- (fev.error + fev.error2)/2
 
-output2 <- survreg(Surv(rhDNase$time2, rhDNase$status) ~ 
-                    rhDNase$trt + fev.error.c, dist='weibull')
+output2 <- survreg(Surv(time2, status) ~ trt + fev.error.c, data = rhDNase, 
+                    dist = "weibull")
 
 summary(output2)
 
 
-
 ######use simexaft and apply the quadratic extrapolation######
-output3=simexaft(formula=formula,data=dataset2,SIMEXvariable=ind,
-            repeated=TRUE,repind=list(c("fev.error","fev.error2")),
-            err.mat=NULL,B=50,lambda=seq(0,2,0.1),extrapolation="quadratic",
-            dist="weibull")
+formula <- Surv(time2, status) ~ trt + fev.error
 
+output3 <- simexaft(formula = formula, data = dataset2, SIMEXvariable = ind, 
+            repeated=TRUE,repind=list(c("fev.error", "fev.error2")), err.mat=NULL, 
+            B=50, lambda=seq(0,2, 0.1), extrapolation="quadratic", dist="weibull")
+            
 summary(output3)
 
 

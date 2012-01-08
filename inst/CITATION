@@ -1,0 +1,20 @@
+citHeader("To cite simexaft in publications use:")
+
+citEntry(entry = "Article",
+  title        = "SIMEX {R} Package for Accelerated Failure Time Models with Covariate Measurement Error",
+  author       = personList(as.person("Wenqing He"),
+                   as.person("Juan Xiong"),
+                   as.person("Grace Y. Yi")),
+  journal      = "Journal of Statistical Software, Code Snippets",
+  year         = "2012",
+  volume       = "46",
+  number       = "1",
+  pages        = "1--14",
+  url          = "http://www.jstatsoft.org/v46/c01/",
+
+  textVersion  =
+  paste("Wenqing He, Juan Xiong, Grace Y. Yi (2012).",
+        "SIMEX R Package for Accelerated Failure Time Models with Covariate Measurement Error.",
+        "Journal of Statistical Software, Code Snippets, 46(1), 1-14.",
+        "URL http://www.jstatsoft.org/v46/c01/.")
+)

@@ -28,8 +28,8 @@ This dataset is a subset of the Busselton Health study. The Busselton Health stu
     \item{\code{CHDCENS}}{indicator of the death from coronary heart disease }
     \item{\code{CVDCENS}}{indicator of the death from cardiovascular disease}
     \item{\code{SMOKE1}}{indicator of ex-smoker}
-    \item{\code{SMOKE2}}{indicator of current smoker}
-  }
+    \item{\code{SMOKE2}}{indicator of current smoker}  
+    }
 }
 
 \details{
@@ -44,5 +44,4 @@ Knuiman, M. W., Cullent, K. J., Bulsara, M. K., Welborn, T. A. and Hobbs, M. S. 
 \seealso{\code{\link[simexaft]{simexaft}}}
 
 \keyword{datasets}
-
 
