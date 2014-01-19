@@ -39,6 +39,7 @@ plotsimexaft(obj, var, extrapolation=c("linear","quadratic","both"), ylimit)
 \examples{
 ###########example for the dataset with known variance.################
 library("simexaft")
+library("survival")
 data("BHS")
 dataset <- BHS
 dataset$SBP <- log(dataset$SBP-50)
@@ -59,6 +60,7 @@ summary(out2)
 plotsimexaft(out2,"SBP","both",ylimit=c(-3,1))
 
 }
+
 
 
 

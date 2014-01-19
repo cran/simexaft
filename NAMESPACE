@@ -1,2 +1,3 @@
+import(mvtnorm)
+import(survival)
 exportPattern("^[[:alpha:]]+")
-export(linearextrapolation, quadraticextrapolation, plotsimexaft, simexaft)

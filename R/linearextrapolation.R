@@ -32,4 +32,3 @@ function(A1,A2,A3,lambda){
 
      return(list("reg1"=reg1,"reg2"=reg2,"scalereg"=scalereg))
 }
-

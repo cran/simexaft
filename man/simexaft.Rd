@@ -58,7 +58,7 @@ Therneau, T. and Lumley, T. (2011). survival: Survival Analysis, Including Penal
 
 \examples{
 library("simexaft")
-
+library("survival")
 data("BHS")
 
 dataset <- BHS
@@ -91,54 +91,55 @@ summary(out2)
 
 
 
+\donttest{
+    #################### repeated measurements #################################
+    data("rhDNase")
 
-#################### repeated measurements #################################
-data("rhDNase")
+    ###true model
+    rhDNase$fev.ave <- (rhDNase$fev + rhDNase$fev2)/2
 
-###true model
-rhDNase$fev.ave <- (rhDNase$fev + rhDNase$fev2)/2
-
-output1 <- survreg(Surv(time2, status) ~ trt + fev.ave, data = rhDNase, 
+    output1 <- survreg(Surv(time2, status) ~ trt + fev.ave, data = rhDNase, 
                     dist = "weibull")
 
-summary(output1)
+    summary(output1)
 
 
-####sensitive analysis#####
-set.seed(120)
+    ####sensitive analysis#####
+    set.seed(120)
 
-fev.error <- rhDNase$fev + rnorm(length(rhDNase$fev), mean = 0, 
+    fev.error <- rhDNase$fev + rnorm(length(rhDNase$fev), mean = 0, 
                                     sd = 0.15 * sd(rhDNase$fev))
 
-fev.error2 <- rhDNase$fev2 + rnorm(length(rhDNase$fev2),mean = 0, 
+    fev.error2 <- rhDNase$fev2 + rnorm(length(rhDNase$fev2),mean = 0, 
                                     sd = 0.15 * sd(rhDNase$fev2))
 
-dataset2 <- cbind(rhDNase[, c("time2", "status", "trt")], fev.error, fev.error2)
+    dataset2 <- cbind(rhDNase[, c("time2", "status", "trt")], fev.error, fev.error2)
 
-formula <- Surv(time2, status) ~ trt + fev.error
+    formula <- Surv(time2, status) ~ trt + fev.error
 
-ind <- "fev.error"
+    ind <- "fev.error"
 
 
-########naive model using the average FEV value####################
-fev.error.c <- (fev.error + fev.error2)/2
+    ########naive model using the average FEV value####################
+    fev.error.c <- (fev.error + fev.error2)/2
 
-output2 <- survreg(Surv(time2, status) ~ trt + fev.error.c, data = rhDNase, 
+    output2 <- survreg(Surv(time2, status) ~ trt + fev.error.c, data = rhDNase, 
                     dist = "weibull")
 
-summary(output2)
+    summary(output2)
 
 
-######use simexaft and apply the quadratic extrapolation######
-formula <- Surv(time2, status) ~ trt + fev.error
+    ######use simexaft and apply the quadratic extrapolation######
+    formula <- Surv(time2, status) ~ trt + fev.error
 
-output3 <- simexaft(formula = formula, data = dataset2, SIMEXvariable = ind, 
+    output3 <- simexaft(formula = formula, data = dataset2, SIMEXvariable = ind, 
             repeated=TRUE,repind=list(c("fev.error", "fev.error2")), err.mat=NULL, 
             B=50, lambda=seq(0,2, 0.1), extrapolation="quadratic", dist="weibull")
             
-summary(output3)
-
+    summary(output3)
+}
 
 }
+
 
 

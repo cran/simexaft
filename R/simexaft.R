@@ -309,4 +309,3 @@ function(formula=formula(data),data=parent.frame(),SIMEXvariable,repeated =FALSE
         return(erg)
 
 }
-

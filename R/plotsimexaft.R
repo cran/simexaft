@@ -62,4 +62,3 @@ function(obj,var,extrapolation = c("linear", "quadratic", "both"),ylimit) {
  }
 
 }
-

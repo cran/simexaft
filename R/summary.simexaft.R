@@ -20,4 +20,3 @@ function (object, ...)
     ans
 
 }
-

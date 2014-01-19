@@ -12,17 +12,17 @@ Implementation of Simulation-Extrapolation (SIMEX) algorithm for the accelerated
 \tabular{ll}{
 Package: \tab simexaft\cr
 Type: \tab Package\cr
-Version: \tab 1.0.6\cr
-Date: \tab 2012-01-08\cr
+Version: \tab 1.0.7\cr
+Date: \tab 2014-01-19\cr
 License: \tab GPL\cr
-Depends: \tab survival, mvtnorm\cr
+Imports: \tab mvtnorm, survival\cr
 LazyLoad: \tab yes\cr
 }
 }
 \author{
-Juan Xiong <jxiong2@uwo.ca>, Wenqing He <whe@stats.uwo.ca>, Grace Y. Yi<yyi@uwaterloo.ca>
+Juan Xiong <xiongjuan2000@gmail.com>, Wenqing He <whe@stats.uwo.ca>, Grace Y. Yi<yyi@uwaterloo.ca>
 
-Maintainer: Juan Xiong <jxiong2@uwo.ca>
+Maintainer: Juan Xiong <xiongjuan2000@gmail.com>
 }
 
 \references{
